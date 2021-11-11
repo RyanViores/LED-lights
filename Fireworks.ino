@@ -30,9 +30,9 @@ void loop(){
   Serial.print(Zval);
   Serial.println("");
 
-  sat = map(Xval, 0, 1023, 0, 255);
-  faderate = map(Yval, 0, 1023, 0, 100);
-  pixels = map(Zval, 0, 1023, 1, 8);
+  int sat = map(Xval, 0, 1023, 0, 255);
+  int faderate = map(Yval, 0, 1023, 0, 100);
+  int pixels = map(Zval, 0, 1023, 1, 8);
    int pxs_to_light[pixels];
    int litcount = 0;
    
