@@ -52,5 +52,5 @@ void loop() {
   //Fill the LED strip solid with the colors specified by the potentiometers
   fill_solid(leds, NUM_LEDS, CRGB(R,G,B));
 
-  
+  FastLED.show();
 }
