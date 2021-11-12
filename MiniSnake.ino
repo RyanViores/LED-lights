@@ -36,24 +36,28 @@ void loop() {
      for(int i=NUM_LEDS;i>(snakesize-1);i--){
         leds[i].setHSV(food_hue, 255, 255);
         leds[i+1].setHSV(0,0,0);
-        snakehue = map(analogRead(A1),0,1000,0,255);
-        if(i == snakesize){
-          if(snakehue < (food_hue+10) && (food_hue-10)<snakehue){
-            snakesize+=1;
-          }
-          else{
-            lives--;
-            fill_solid(leds, NUM_LEDS, CRGB(255,0,0));
-            FastLED.delay(150);
-            fill_solid(leds, NUM_LEDS, CRGB(0,0,0));
-          }
-        }
-        fill_solid(leds, snakesize+1, CHSV(snakehue, 255, 255));
-        FastLED.show();
-     
-        int delaytime = 200 - (20 * snakesize);
-        FastLED.delay(delaytime);
+        
+        for (int j=0; j<10;j++){
+          snakehue = map(analogRead(A1),0,1000,0,255);
+       
+          fill_solid(leds, snakesize, CHSV(snakehue, 255, 255));
+          FastLED.show();
+       
+          int delaytime = 40;
+          FastLED.delay(delaytime);
         //FastLED.show();
+        }
+        if(i == snakesize){
+            if(snakehue < (food_hue+15) && (food_hue-15)<snakehue){
+              snakesize+=1;
+            }
+            else{
+              lives--;
+              fill_solid(leds, NUM_LEDS, CRGB(255,0,0));
+              FastLED.delay(150);
+              fill_solid(leds, NUM_LEDS, CRGB(0,0,0));
+            }
+          }
      }
 
    }
