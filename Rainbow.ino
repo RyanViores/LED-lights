@@ -2,7 +2,7 @@
 
 #define PIN 6
 #define NUM_LEDS 10
-#define BRIGHTNESS 255
+#define BRIGHTNESS 128
 
 CRGB leds[NUM_LEDS];
 
@@ -19,9 +19,9 @@ void setup() {
 }
 
 void loop() {
-  int Xval = analogRead(A1);
-  int Yval = analogRead(A2);
-  int Zval = analogRead(A3);
+  int Xval = analogRead(A0);
+  int Yval = analogRead(A1);
+  int Zval = analogRead(A2);
 
   Serial.print(Xval);
   Serial.print(", ");
@@ -30,7 +30,10 @@ void loop() {
   Serial.print(Zval);
   Serial.println("");
 
-  fill_rainbow(leds, NUM_LEDS, beat8(map(Xval,0,1023,2,75)), map(Yval,0,1023,1,15));
+  int bandSize = map(Xval,0,1000,1,75);
+  int BPM = map(Yval,0,1000,1,40);
+
+  fill_rainbow(leds, NUM_LEDS, beat8(BPM, bandSize));
 
   FastLED.show();
 }
