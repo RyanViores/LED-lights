@@ -5,7 +5,7 @@
 #define PIN 6
 
 //Set the number of LEDs in our strip and how bright they will be. 
-#define NUM_LEDS 10
+#define NUM_LEDS 15
 #define BRIGHTNESS 128
 
 //This defines our strip as an array of LEDs with size NUM_LEDS
