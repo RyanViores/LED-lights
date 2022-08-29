@@ -1,7 +1,7 @@
 #include <FastLED.h>
 
 #define PIN 6
-#define NUM_LEDS 10
+#define NUM_LEDS 15
 #define BRIGHTNESS 255
 
 CRGB leds[NUM_LEDS];
